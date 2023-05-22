@@ -1,0 +1,41 @@
+'Test for 0-add_integer module, within 0-add_integer.py'
+
+'Function to test: add_integer(a, b=98)'
+
+>>> add_integer = __import__('0-add_integer').add_integer
+
+'test for positive integer addition'
+
+>>> add_integer(2, 3)
+5
+
+'test for negaitve integer addition'
+
+>>> add_integer(-2, -3)
+-5
+
+'test for positive float addition'
+
+>>> add_integer(2.0, 3.3)
+5
+
+'test for negaitve float addition'
+
+>>> add_integer(-2.0, -3.3)
+-5
+
+'test for empty slot 1'
+
+>>> add_integer(, 3.3)
+TypeError ("a must be an integer")
+
+'test for empty slot 2 (this is allowed due to default)'
+
+>>> add_integer(3.3,)
+101
+
+'test for empty args'
+
+>>> add_integer()
+TypeError ("a must be an integer")
+
