@@ -1,11 +1,7 @@
 #!/usr/bin/python3
 
-class Square:
-    def __init__(self, side_length):
-        self.side_length = side_length
+Square = __import__('0-square').Square
 
-    def perimeter(self):
-        return 4 * self.side_length
-
-    def area(self):
-        return self.side_length ** 2
+my_square = Square()
+print(type(my_square))
+print(my_square.__dict__)
