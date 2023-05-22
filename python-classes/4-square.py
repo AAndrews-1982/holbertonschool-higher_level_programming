@@ -14,7 +14,8 @@ Instantiation with optional size: def __init__(self, size=0):
 Public instance method: def area(self): that returns the current square area"""
 
 class Square:
-    """Class that defines a square by size"""
+    """Class that defines a square by size
+    """
 
     def __init__(self, size=0):
         """Initialize a new Square.
