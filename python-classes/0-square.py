@@ -1,7 +1,7 @@
 #!/usr/bin/python3
+"""Module to define a square"""
 
-Square = __import__('0-square').Square
 
-my_square = Square()
-print(type(my_square))
-print(my_square.__dict__)
+class Square:
+    """An empty class that defines a square"""
+    pass
