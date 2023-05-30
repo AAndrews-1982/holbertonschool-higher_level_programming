@@ -41,10 +41,10 @@ class Student:
         Args: attrs (list): List of attribute names to be retrieved (optional).
 
         Returns: dict: A dictionary containing the attribute
-        names and values of the Student instance.
-        
+        names and values of the Student instance. 
         """
         if attrs is None:
             return self.__dict__
         else:
-            return {attr: getattr(self, attr) for attr in attrs if hasattr(self, attr)}
+            return {attr: getattr(self, attr)
+                    for attr in attrs if hasattr(self, attr)}
