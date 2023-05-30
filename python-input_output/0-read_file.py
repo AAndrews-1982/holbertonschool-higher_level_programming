@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/usr/bin/python3
 def read_file(filename=""):
     """Read a text file and print its contents to stdout"""
     with open(filename, encoding="utf-8") as file:
