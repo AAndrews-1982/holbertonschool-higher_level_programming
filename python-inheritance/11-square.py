@@ -16,9 +16,9 @@ class Square(Rectangle):
     """The square class based on rectangle"""
     def __init__(self, size):
         """This is the Initialization Method"""
-        super().__init__(size, size)
         self.integer_validator("size", size)
         self.__size = size
+        super().__init__(size, size)
 
     def __str__(self):
         """return string representation of rectangle"""
