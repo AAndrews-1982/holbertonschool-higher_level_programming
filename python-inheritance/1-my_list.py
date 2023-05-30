@@ -1,12 +1,17 @@
 #!/usr/bin/python3
-MyList = __import__('1-my_list').MyList
+"""
+Write a class MyList that inherits from list:
 
-my_list = MyList()
-my_list.append(1)
-my_list.append(4)
-my_list.append(2)
-my_list.append(3)
-my_list.append(5)
-print(my_list)
-my_list.print_sorted()
-print(my_list)
+Public instance method: def print_sorted(self):
+    that prints the list, but sorted (ascending sort)
+You can assume that all the elements of the
+    list will be of type int
+You are not allowed to import any module
+"""
+
+
+class MyList(list):
+    """MyList class that inherits from list"""
+    def print_sorted(self):
+        """Prints a sorted list without changing original"""
+        print(sorted(self))
