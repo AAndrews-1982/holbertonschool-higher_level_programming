@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 """
-Write a function that returns an object (Python data structure) represented by a JSON string:
+Returns an object (Python data structure)
+if represented by a JSON string:
 
 Prototype: def from_json_string(my_str):
-You don’t need to manage exceptions if the JSON string doesn’t represent an object.
+No need to manage exceptions if JSON string doesn’t represent
+an object.
 """
 
 
