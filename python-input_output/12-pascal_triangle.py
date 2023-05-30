@@ -33,7 +33,7 @@ def pascal_triangle(n):
         current_row = [1]  # First element of the current row is always 1
 
         for j in range(1, i):
-            # Calculate the value by adding the corresponding values 
+            # Calculate the value by adding the corresponding values
             # from the previous row
             value = prev_row[j - 1] + prev_row[j]
             current_row.append(value)
