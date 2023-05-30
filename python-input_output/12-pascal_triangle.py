@@ -10,6 +10,7 @@ Returns:
 
 """
 
+
 def pascal_triangle(n):
     """
     Generate Pascal's triangle up to the given number of rows.
@@ -32,11 +33,12 @@ def pascal_triangle(n):
         current_row = [1]  # First element of the current row is always 1
 
         for j in range(1, i):
-            # Calculate the value by adding the corresponding values from the previous row
+            # Calculate the value by adding the corresponding values 
+            # from the previous row
             value = prev_row[j - 1] + prev_row[j]
             current_row.append(value)
 
-        current_row.append(1)  
+        current_row.append(1)
         # Last element of the current row is always 1
         triangle.append(current_row)
 
