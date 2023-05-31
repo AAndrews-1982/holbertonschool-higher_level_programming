@@ -1,40 +1,32 @@
 #!/usr/bin/python3
 """
-Script to add arguments to a Python list and save them to a file:
+Write a script that adds all arguments to a
+    Python list, and then save them to a file:
 
-You must use the function save_to_json_file from 5-save_to_json_file.py
-You must use the function load_from_json_file from 6-load_from_json_file.py
-The list must be saved as a JSON representation in a file named add_item.json
+You must use your function save_to_json_file from
+    5-save_to_json_file.py
+You must use your function load_from_json_file from
+    6-load_from_json_file.py
+The list must be saved as a JSON representation in a
+    file named add_item.json
 If the file doesn’t exist, it should be created
+You don’t need to manage file permissions / exceptions.
 """
-
 import sys
-from os import path
-from load_from_json_file import load_from_json_file
-from save_to_json_file import save_to_json_file
-
-def add_arguments_to_list(args, filename):
-    """
-    Add arguments to a Python list and save them to a file.
-
-    Args:
-        args (list): List of arguments to be added.
-        filename (str): Name of the file to save the list.
-
-    Returns:
-        None
-    """
-    if path.exists(filename):
-        my_list = load_from_json_file(filename)
-    else:
-        my_list = []
-
-    my_list.extend(args)
-
-    save_to_json_file(my_list, filename)
+save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
 
-if __name__ == '__main__':
-    args = sys.argv[1:]
-    filename = "add_item.json"
-    add_arguments_to_list(args, filename)
+try:
+        existing_data = load_from_json_file('add_item.json')
+except:
+    existing_data = []
+
+new_items = sys.argv[1:]
+updated_data = existing_data + new_items
+
+# for i in range(1, len(sys.argv)):
+#     existing_data.append(sys.argv[i])
+
+save_to_json_file(updated_data, 'add_item.json')
+# save_to_json_file(existing_data, 'add_item.json')
