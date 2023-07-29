@@ -11,4 +11,10 @@ class Rectangle {
   }
 }
 
-module.exports = Rectangle;
+const rectangle1 = new Rectangle(3, -3);
+const rectangle2 = new Rectangle(3);
+const rectangle3 = new Rectangle();
+
+console.log(rectangle1);
+console.log(rectangle2);
+console.log(rectangle3);
