@@ -1,27 +1,26 @@
 #!/usr/bin/node
-
-function findSecondBiggestIntegers(args) {
-  if (args.length <= 2) {
+const findSecondLargest = (numbers) => {
+  if (numbers.length <= 1) {
     return 0;
   }
 
-  let first = Number.MIN_SAFE_INTEGER;
-  let second = Number.MIN_SAFE_INTEGER;
+  let largest = -Infinity;
+  let secondLargest = -Infinity;
 
-  for (const arg of args) {
-    const num = parseInt(arg);
-    if (num > first) {
-      second = first;
-      first = num;
-    } else if (num > second && num < first) {
-      second = num;
+  for (let i = 0; i < numbers.length; i++) {
+    const num = parseInt(numbers[i]);
+    if (num > largest) {
+      secondLargest = largest;
+      largest = num;
+    } else if (num > secondLargest && num !== largest) {
+      secondLargest = num;
     }
   }
 
-  return second;
-}
+  return secondLargest;
+};
 
 const args = process.argv.slice(2);
-const secondBiggest = findSecondBiggestIntegers(args);
+const result = findSecondLargest(args);
 
-console.log(secondBiggest);
+console.log(result);

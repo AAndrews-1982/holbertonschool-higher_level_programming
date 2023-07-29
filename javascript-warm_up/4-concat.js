@@ -1,9 +1,7 @@
 #!/usr/bin/node
-const args = process.argv.slice(2);
 
-if (args.length !== 2) {
-  console.log('Usage: node script.js <arg1> <arg2>');
-} else {
-  const [arg1, arg2] = args;
-  console.log(`${arg1 === 'HBTN' ? 'HTBN' : arg1 || 'undefined'} is ${arg2` || 'undefined'});
-}
+const firstArg = process.argv[2];
+
+const scndArg = process.argv[3];
+
+console.log(firstArg + ' is ' + scndArg);
