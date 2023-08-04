@@ -1,12 +1,9 @@
 #!/usr/bin/node
-
 const fs = require('fs');
-const [fileToWrite, contentToWrite] = process.argv.slice(2);
+const ARGV = process.argv;
 
-fs.writeFile(fileToWrite, contentToWrite, 'utf-8', (error) => {
-  if (error) {
-    console.error('An error occurred:', error.message);
-  } else {
-    console.log('Content written successfully.');
+fs.writeFile(ARGV[2], ARGV[3], 'utf-8', (err) => {
+  if (err) {
+    console.log(err);
   }
 });
