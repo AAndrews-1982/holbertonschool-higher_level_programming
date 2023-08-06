@@ -1,17 +1,24 @@
 #!/usr/bin/node
-
 const request = require('request');
+const url = process.argv[2];
+let counter = 0;
 
-const apiUrl = process.argv[2];
+request.get(url, (err, response, body) => {
+  if (err) {
+    console.log(err);
+  }
 
-request.get(apiUrl, (error, response, body) => {
-  if (error) {
-    console.error('An error occurred:', error.message);
-  } else if (response.statusCode !== 200) {
-    console.error('Request failed with status code:', response.statusCode);
+  if (response.statusCode === 200) {
+    const data = JSON.parse(body).results;
+    for (const film of data) {
+      for (const character of film.characters) {
+        if (character.includes('/18/')) {
+          counter += 1;
+        }
+      }
+    }
+    console.log(counter);
   } else {
-    const films = JSON.parse(body).results;
-    const wedgeMovies = films.filter(film => film.characters.includes('https://swapi-api.hbtn.io/api/people/18/'));
-    console.log(wedgeMovies.length);
+    console.error('Request failed with status:', response.statusCode);
   }
 });
