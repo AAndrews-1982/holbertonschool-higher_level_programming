@@ -1,18 +1,22 @@
 #!/usr/bin/node
 
 const request = require('request');
-const fs = require('fs');
+const fs = require('fs/promises'); // Using the built-in promises version of fs
 
 const url = process.argv[2];
 const filePath = process.argv[3];
 
-request.get(url, (error, response, body) => {
+request(url, (error, response, body) => {
   if (error) {
-    console.error('An error occurred:', error.message);
-  } else if (response.statusCode !== 200) {
-    console.error('Request failed with status code:', response.statusCode);
-  } else {
-    fs.writeFileSync(filePath, body, 'utf-8');
-    console.log('Content saved to file successfully.');
+    console.error('error:', error);
+    return;
   }
+
+  fs.writeFile(filePath, body, 'utf8')
+    .then(() => {
+      console.log(`Contents of ${url} have been saved to ${filePath}`);
+    })
+    .catch(err => {
+      console.error(err);
+    });
 });
