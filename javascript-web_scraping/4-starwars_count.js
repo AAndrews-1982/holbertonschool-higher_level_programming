@@ -11,7 +11,7 @@ request(apiUrl, (error, response, body) => {
   }
 
   const films = JSON.parse(body).results;
-  let count = films.reduce((acc, film) => {
+  const count = films.reduce((acc, film) => {
     if (film.characters.some(character => character.endsWith('/18/'))) {
       return acc + 1;
     }
