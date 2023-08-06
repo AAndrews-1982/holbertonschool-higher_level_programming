@@ -1,24 +1,22 @@
 #!/usr/bin/node
+
 const request = require('request');
-const url = process.argv[2];
-let counter = 0;
 
-request.get(url, (err, response, body) => {
-  if (err) {
-    console.log(err);
+const apiUrl = process.argv[2];
+
+request(apiUrl, (error, response, body) => {
+  if (error) {
+    console.error('error:', error);
+    return;
   }
 
-  if (response.statusCode === 200) {
-    const data = JSON.parse(body).results;
-    for (const film of data) {
-      for (const character of film.characters) {
-        if (character.includes('/18/')) {
-          counter += 1;
-        }
-      }
+  const films = JSON.parse(body).results;
+  let count = films.reduce((acc, film) => {
+    if (film.characters.some(character => character.endsWith('/18/'))) {
+      return acc + 1;
     }
-    console.log(counter);
-  } else {
-    console.error('Request failed with status:', response.statusCode);
-  }
+    return acc;
+  }, 0);
+
+  console.log(count);
 });
